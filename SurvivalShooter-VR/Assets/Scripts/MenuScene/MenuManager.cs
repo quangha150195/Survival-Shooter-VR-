@@ -24,24 +24,27 @@ public class MenuManager : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-	  Physics.Raycast(m_Recticle.transform.position, m_Recticle.transform.forward, out hit); 
-    GameObject a = new GameObject();
-    if(hit.collider.tag == "VRMenu")
-    {
-          GameObject _thisButton = hit.collider.gameObject;
-          iTween.ScaleTo(_thisButton, iTween.Hash("x", 1.5f, "y", 1.5f, "time", 0.3f));
-          if(GvrViewer.Instance.Triggered)
-          {
-              m_Player.GetComponent<PlayerController>().m_move = true;
-              _thisButton.GetComponent<Button>().onClick.Invoke();
-          }
-          _thisButton = a;
+	    Physics.Raycast(m_Recticle.transform.position, m_Recticle.transform.forward, out hit); 
+        GameObject _thisButton = new GameObject();
+        if(hit.collider.tag == "VRMenu")
+        {
+             _thisButton = hit.collider.gameObject;
+              iTween.ScaleTo(_thisButton, iTween.Hash("x", 1.5f, "y", 1.5f, "time", 0.3f));
+              if(GvrViewer.Instance.Triggered)
+              {
+                  m_Player.GetComponent<PlayerController>().m_move = true;
+                  _thisButton.GetComponent<Button>().onClick.Invoke();
+              }
+        }
+        else
+        {
+            GameObject[] _buttonMenu = GameObject.FindGameObjectsWithTag("VRMenu");
+            foreach (GameObject a in _buttonMenu)
+            {
+                iTween.ScaleTo(a, iTween.Hash("x", 1.0f, "y", 1.0f, "time", 0.3f));
+            }
+        }
     }
-    else
-    {
-      iTween.ScaleTo(a, iTween.Hash("x", 1.0f, "y", 1.0f, "time", 0.3f));
-    }
-	}
 
 
   public void btnPlay()
