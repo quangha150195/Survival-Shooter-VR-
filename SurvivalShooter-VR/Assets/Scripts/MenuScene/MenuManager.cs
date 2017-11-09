@@ -72,7 +72,7 @@ public class MenuManager : MonoBehaviour {
 
     public void btnExit(GameObject _popup)
     {
-        Scale_ButtonMenu();
+        Scale_ButtonMenu();                
         _popup.SetActive(false);
         m_BtnGroup.SetActive(true);
     }
@@ -86,10 +86,17 @@ public class MenuManager : MonoBehaviour {
         }
     }
 
-    public void loadScene()
+    public void Play()
     {
-        SceneManager.LoadScene("Lv1");
+        StartCoroutine(loadScene());
     }
-
-
+    
+    IEnumerator loadScene()
+    {
+        AsyncOperation asyncLoad = SceneManager.LoadSceneAsync("Lv1");
+        while (!asyncLoad.isDone)
+        {          
+            yield return null;
+        }
+    }
 }
