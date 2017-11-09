@@ -8,7 +8,7 @@ public class MenuManager : MonoBehaviour {
 
     [SerializeField]
     private GameObject m_Player;
-    [SerializeField] 
+    [SerializeField]
     private GameObject m_Recticle;
     [SerializeField]
     private GameObject m_BtnGroup;
@@ -16,7 +16,7 @@ public class MenuManager : MonoBehaviour {
     private GameObject m_BtnAbout;
     [SerializeField]
     private GameObject m_BtnSelectLevel;
-   
+
     [Header("Audio")]
     [SerializeField]
     private AudioClip m_SoundClick;
@@ -28,27 +28,28 @@ public class MenuManager : MonoBehaviour {
     private int m_Once;
     private bool _checkOneShot = true;
     // Use this for initialization
-    void Start () {
+    void Start() {
         m_SoundManager = gameObject.GetComponent<AudioSource>();
-	}
-	
-	// Update is called once per frame
-	void Update () {
-       
-	    Physics.Raycast(m_Recticle.transform.position, m_Recticle.transform.forward, out hit); 
-        GameObject _thisButton = new GameObject();
-        if(hit.collider.tag == "VRMenu")
+    }
+
+    // Update is called once per frame
+    void Update() {
+
+        Physics.Raycast(m_Recticle.transform.position, m_Recticle.transform.forward, out hit);
+
+        if (hit.collider.tag == "VRMenu")
         {
-            if(_checkOneShot)
+            if (_checkOneShot)
             {
                 m_SoundManager.PlayOneShot(m_SoundRaycast);
                 _checkOneShot = false;
-            }                
-            _thisButton = hit.collider.gameObject;
+            }
+            GameObject _thisButton = hit.collider.gameObject;
             iTween.ScaleTo(_thisButton, iTween.Hash("x", 1.5f, "y", 1.5f, "time", 0.3f));
-            if(GvrViewer.Instance.Triggered)
+            if (GvrViewer.Instance.Triggered)
             {
-                
+                m_SoundManager.PlayOneShot(m_SoundClick);
+                hit.collider.gameObject.transform.localScale = new Vector3(1, 1, 1);
                 m_Player.GetComponent<PlayerController>().m_move = true;
                 _thisButton.GetComponent<Button>().onClick.Invoke();
             }
@@ -56,33 +57,39 @@ public class MenuManager : MonoBehaviour {
         else
         {
             _checkOneShot = true;
-            GameObject[] _buttonMenu = GameObject.FindGameObjectsWithTag("VRMenu");
-            foreach (GameObject a in _buttonMenu)
-            {
-                iTween.ScaleTo(a, iTween.Hash("x", 1.0f, "y", 1.0f, "time", 0.3f));
-            }
-            
+            Scale_ButtonMenu();
         }
-      
+
     }
 
-
-  public void btnPlay()
-  {
-        m_SoundManager.PlayOneShot(m_SoundClick);
+    public void btnMenu(GameObject _popup)
+    {
+        Scale_ButtonMenu();
         m_BtnGroup.SetActive(false);
-        m_BtnSelectLevel.SetActive(true);
-  }
+        _popup.SetActive(true);
+        iTween.ScaleFrom(_popup, iTween.Hash("x", 0.7f, "y", 0.7f, "time", 0.5f));
+    }
 
-  public void btnAbout()
-  {
-        m_SoundManager.PlayOneShot(m_SoundClick);
-        m_BtnGroup.SetActive(false);
-        m_BtnAbout.SetActive(true);
-  }
+    public void btnExit(GameObject _popup)
+    {
+        Scale_ButtonMenu();
+        _popup.SetActive(false);
+        m_BtnGroup.SetActive(true);
+    }
 
+    private void Scale_ButtonMenu()
+    {
+        GameObject[] _buttonMenu = GameObject.FindGameObjectsWithTag("VRMenu");
+        foreach (GameObject a in _buttonMenu)
+        {
+            iTween.ScaleTo(a, iTween.Hash("x", 1.0f, "y", 1.0f, "time", 0.3f));
+        }
+    }
 
-
+    public void loadScene()
+    {
+        SceneManager.LoadScene("Lv1");
+    }
 
 
 }
