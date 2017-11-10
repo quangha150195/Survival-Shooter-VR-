@@ -29,6 +29,9 @@ public class GameController : MonoBehaviour {
     public static int score;
     public Text txtScore;
 
+    [SerializeField]
+    private GameObject m_FadeforDie;
+
     void Start ()
     {
         score = 0;
@@ -76,6 +79,12 @@ public class GameController : MonoBehaviour {
                 Effect(m_isEffect);
             }
         }
+
+        if(PlayerHealth.instance.isDead)
+        {
+          CanvasOver();
+        }
+       
     }
 	
     void Effect(bool b)
@@ -104,6 +113,26 @@ public class GameController : MonoBehaviour {
             {
                 enemy.GetComponent<EnemyHealth>().TakeDamage(15, hit.point);
             }
+        }
+    }
+
+    public void CanvasOver()
+    {
+      //time = _time;
+        float time = 3;
+        m_FadeforDie.SetActive(true);
+        float temp  = 0;
+        temp += Time.deltaTime;
+
+        while(time < temp)
+        {
+          m_FadeforDie.GetComponent<CanvasGroup>().alpha += Time.deltaTime;
+        }
+
+        temp = 0;
+        while(time*2 < temp)
+        {
+          m_FadeforDie.GetComponent<CanvasGroup>().alpha -= Time.deltaTime;
         }
     }
 }

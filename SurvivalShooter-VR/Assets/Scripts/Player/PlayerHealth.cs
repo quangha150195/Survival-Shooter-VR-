@@ -17,9 +17,10 @@ public class PlayerHealth : MonoBehaviour
     //AudioSource playerAudio;
     //PlayerMovement playerMovement;
     //PlayerShooting playerShooting;
-    bool isDead;
+    public bool isDead;
     bool damaged;
 
+    public static PlayerHealth instance;
 
     void Awake ()
     {
@@ -28,6 +29,7 @@ public class PlayerHealth : MonoBehaviour
         //playerMovement = GetComponent <PlayerMovement> ();
         ////playerShooting = GetComponentInChildren <PlayerShooting> ();
         currentHealth = startingHealth;
+        instance = this;
     }
 
 
@@ -65,7 +67,7 @@ public class PlayerHealth : MonoBehaviour
 
     void Death ()
     {
-        //isDead = true;
+        isDead = true;
 
         ////playerShooting.DisableEffects ();
 
@@ -75,7 +77,7 @@ public class PlayerHealth : MonoBehaviour
         //playerAudio.Play ();
 
         //playerMovement.enabled = false;
-        ////playerShooting.enabled = false;
+        //playerShooting.enabled = false;
     }
 
 
