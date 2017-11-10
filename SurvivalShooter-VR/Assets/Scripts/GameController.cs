@@ -1,11 +1,16 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
+[RequireComponent(typeof(AudioSource))]
 public class GameController : MonoBehaviour {
 
     public GameObject m_player;
     public GameObject m_gun;
+    public GameObject m_icon;
+    public GameObject m_iconHealth;
+    public GameObject m_slider;
 
     public bool m_isFx;
     public float m_speedShoot;
@@ -29,6 +34,7 @@ public class GameController : MonoBehaviour {
 
     public static int score;
     public Text txtScore;
+    public Text txtScoreOver;
 
     [SerializeField]
     private GameObject m_FadeforDie;
@@ -37,10 +43,20 @@ public class GameController : MonoBehaviour {
     [SerializeField]
     private GameObject m_GameOver;
 
+
+    [Header("Audio")]
+    [SerializeField]
+    private AudioClip m_SoundClick;
+    [SerializeField]
+    private AudioClip m_SoundRaycast;
+
+    AudioSource m_SoundManager;
     private float timeFadeOver = 0;
+    private bool _checkOneShot = true;
 
     void Start ()
     {
+        m_SoundManager = gameObject.GetComponent<AudioSource>();
         startPositionPlayer = m_player.transform.position;
         score = 0;
         m_isGun = false;
@@ -81,8 +97,32 @@ public class GameController : MonoBehaviour {
                 enemy = hit.collider.gameObject;
             }
 
+            if (hit.collider.tag == "VRMenu")
+            {
+                if (_checkOneShot)
+                {
+                    m_SoundManager.PlayOneShot(m_SoundRaycast);
+                    _checkOneShot = false;
+                }
+                GameObject _thisButton = hit.collider.gameObject;
+                iTween.ScaleTo(_thisButton, iTween.Hash("x", 1.5f, "y", 1.5f, "time", 0.3f));
+                if (GvrViewer.Instance.Triggered)
+                {
+                    m_SoundManager.PlayOneShot(m_SoundClick);
+                    hit.collider.gameObject.transform.localScale = new Vector3(1, 1, 1);
+                    m_player.GetComponent<PlayerController>().m_speed = 0;
+                    _thisButton.GetComponent<Button>().onClick.Invoke();
+                }
+            }
+            else if(hit.collider.tag != "VRMenu")
+            {
+                _checkOneShot = true;
+                Scale_ButtonMenu();
+            }
+
             if (hit.collider.tag == "Untagged")
             {
+                
                 m_isEffect = false;
                 Effect(m_isEffect);
             }
@@ -134,13 +174,21 @@ public class GameController : MonoBehaviour {
         {
             Destroy(_enemy);
         }
+        
         if (_timer > timeFadeOver)
         {          
             m_FadeforDie.GetComponent<CanvasGroup>().alpha += Time.deltaTime/ _timer;
         }
         else
         {
+            m_gun.SetActive(false);
             m_GameOver.SetActive(true);
+            txtScore.gameObject.SetActive(false);
+            m_icon.SetActive(false);
+            m_iconHealth.SetActive(false);
+            m_slider.SetActive(false);
+            txtScoreOver.text = score.ToString();
+
             m_player.transform.position = startPositionPlayer;
             m_FadeforDie.GetComponent<CanvasGroup>().alpha -= Time.deltaTime / (_timer * 1.2f);
            
@@ -151,5 +199,20 @@ public class GameController : MonoBehaviour {
             Debug.Log("Exit GameOver Fade");
         }
             
+    }
+
+    public void OverButton(string _nameFunction)
+    {
+        iTween.ScaleTo(m_GameOver, iTween.Hash("x", 0, "y", 0, "time", 0.3f));
+        SceneManager.LoadScene(_nameFunction);
+    }
+
+    private void Scale_ButtonMenu()
+    {
+        GameObject[] _buttonMenu = GameObject.FindGameObjectsWithTag("VRMenu");
+        foreach (GameObject a in _buttonMenu)
+        {
+            iTween.ScaleTo(a, iTween.Hash("x", 1.0f, "y", 1.0f, "time", 0.3f));
+        }
     }
 }

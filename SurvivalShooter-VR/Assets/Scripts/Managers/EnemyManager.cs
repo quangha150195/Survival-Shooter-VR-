@@ -19,7 +19,7 @@ public class EnemyManager : MonoBehaviour
         StartCoroutine(SpawnEnemy());
     }
 
-    IEnumerator SpawnEnemy()
+    public IEnumerator SpawnEnemy()
     {
         while (m_ListEnemy.Count < maxEnemy)
         {

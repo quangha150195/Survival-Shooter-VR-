@@ -3,7 +3,7 @@ using System.Collections;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
-[RequireComponent(typeof(AudioSource))]
+
 public class MenuManager : MonoBehaviour {
 
     [SerializeField]
@@ -25,7 +25,7 @@ public class MenuManager : MonoBehaviour {
 
     AudioSource m_SoundManager;
     RaycastHit hit;
-    private int m_Once;
+
     private bool _checkOneShot = true;
     // Use this for initialization
     void Start() {
