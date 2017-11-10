@@ -5,6 +5,7 @@ using System.Collections.Generic;
 public class EnemyManager : MonoBehaviour
 {
     //public PlayerHealth playerHealth;
+    public static EnemyManager instance;
     public int maxEnemy;
     public GameObject[] enemy;
     public float spawnTime = 3f;
@@ -13,6 +14,7 @@ public class EnemyManager : MonoBehaviour
 
     void Start ()
     {
+        instance = this;
         m_ListEnemy = new List<GameObject>();
         StartCoroutine(SpawnEnemy());
     }

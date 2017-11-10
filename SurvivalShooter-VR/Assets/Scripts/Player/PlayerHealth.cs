@@ -68,7 +68,7 @@ public class PlayerHealth : MonoBehaviour
     void Death ()
     {
         isDead = true;
-
+        PlayerController.instance.m_move = false;
         ////playerShooting.DisableEffects ();
 
         //anim.SetTrigger ("Die");

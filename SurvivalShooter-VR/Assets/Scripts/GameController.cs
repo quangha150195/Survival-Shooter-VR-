@@ -19,6 +19,7 @@ public class GameController : MonoBehaviour {
 
     RaycastHit hit;
     Vector3 hitPoint;
+    Vector3 startPositionPlayer;
 
     private bool m_isGun;
     private bool m_isEffect;
@@ -31,9 +32,16 @@ public class GameController : MonoBehaviour {
 
     [SerializeField]
     private GameObject m_FadeforDie;
+    [SerializeField]
+    private float timeFade = 2;
+    [SerializeField]
+    private GameObject m_GameOver;
+
+    private float timeFadeOver = 0;
 
     void Start ()
     {
+        startPositionPlayer = m_player.transform.position;
         score = 0;
         m_isGun = false;
         m_isEffect = false;
@@ -82,7 +90,7 @@ public class GameController : MonoBehaviour {
 
         if(PlayerHealth.instance.isDead)
         {
-          CanvasOver();
+            CanvasOver(timeFade);
         }
        
     }
@@ -116,23 +124,32 @@ public class GameController : MonoBehaviour {
         }
     }
 
-    public void CanvasOver()
-    {
-      //time = _time;
-        float time = 3;
-        m_FadeforDie.SetActive(true);
-        float temp  = 0;
-        temp += Time.deltaTime;
-
-        while(time < temp)
+    public void CanvasOver(float _timer)
+    {   
+        timeFadeOver += Time.deltaTime;
+        m_player.GetComponent<PlayerController>().m_speed = 0;
+        EnemyManager.instance.maxEnemy = 0;
+        GameObject[] listEnemy = GameObject.FindGameObjectsWithTag("Enemy");
+        foreach(GameObject _enemy in listEnemy)
         {
-          m_FadeforDie.GetComponent<CanvasGroup>().alpha += Time.deltaTime;
+            Destroy(_enemy);
         }
-
-        temp = 0;
-        while(time*2 < temp)
+        if (_timer > timeFadeOver)
+        {          
+            m_FadeforDie.GetComponent<CanvasGroup>().alpha += Time.deltaTime/ _timer;
+        }
+        else
         {
-          m_FadeforDie.GetComponent<CanvasGroup>().alpha -= Time.deltaTime;
+            m_GameOver.SetActive(true);
+            m_player.transform.position = startPositionPlayer;
+            m_FadeforDie.GetComponent<CanvasGroup>().alpha -= Time.deltaTime / (_timer * 1.2f);
+           
         }
+        if (m_FadeforDie.GetComponent<CanvasGroup>().alpha == 0)
+        {
+            PlayerHealth.instance.isDead = false;          
+            Debug.Log("Exit GameOver Fade");
+        }
+            
     }
 }

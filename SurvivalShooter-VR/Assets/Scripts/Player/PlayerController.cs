@@ -2,6 +2,7 @@
 using System.Collections;
 
 public class PlayerController : MonoBehaviour {
+    public static PlayerController instance;
     public bool m_move;
     public float m_speed;
     public GameObject m_head;
@@ -11,6 +12,7 @@ public class PlayerController : MonoBehaviour {
 
 	void Start ()
     {
+        instance = this;
         //Get rigidbody of player
         m_playerRigid = this.GetComponent<Rigidbody>();
 
