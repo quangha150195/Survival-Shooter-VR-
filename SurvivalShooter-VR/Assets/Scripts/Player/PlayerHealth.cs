@@ -7,16 +7,9 @@ public class PlayerHealth : MonoBehaviour
     public int startingHealth = 100;
     public int currentHealth;
     public Slider healthSlider;
-    public Image damageImage;
     public AudioClip deathClip;
-    public float flashSpeed = 5f;
-    public Color flashColour = new Color(1f, 0f, 0f, 0.1f);
-
     public Animator blood;
-    //Animator anim;
-    //AudioSource playerAudio;
-    //PlayerMovement playerMovement;
-    //PlayerShooting playerShooting;
+    AudioSource playerAudio;
     public bool isDead;
     bool damaged;
 
@@ -24,10 +17,7 @@ public class PlayerHealth : MonoBehaviour
 
     void Awake ()
     {
-        //anim = GetComponent <Animator> ();
-        //playerAudio = GetComponent <AudioSource> ();
-        //playerMovement = GetComponent <PlayerMovement> ();
-        ////playerShooting = GetComponentInChildren <PlayerShooting> ();
+        playerAudio = GetComponent <AudioSource> ();
         currentHealth = startingHealth;
         instance = this;
     }
@@ -35,15 +25,7 @@ public class PlayerHealth : MonoBehaviour
 
     void Update ()
     {
-        //if (damaged)
-        //{
-        //    damageImage.color = flashColour;
-        //}
-        //else
-        //{
-        //    damageImage.color = Color.Lerp (damageImage.color, Color.clear, flashSpeed * Time.deltaTime);
-        //}
-        //damaged = false;
+        
     }
 
 
@@ -56,7 +38,7 @@ public class PlayerHealth : MonoBehaviour
 
         healthSlider.value = currentHealth;
 
-        //playerAudio.Play ();
+        playerAudio.Play ();
 
         if(currentHealth <= 0 && !isDead)
         {
@@ -69,20 +51,8 @@ public class PlayerHealth : MonoBehaviour
     {
         isDead = true;
         PlayerController.instance.m_move = false;
-        ////playerShooting.DisableEffects ();
 
-        //anim.SetTrigger ("Die");
-
-        //playerAudio.clip = deathClip;
-        //playerAudio.Play ();
-
-        //playerMovement.enabled = false;
-        //playerShooting.enabled = false;
-    }
-
-
-    public void RestartLevel ()
-    {
-        //Application.LoadLevel (Application.loadedLevel);
+        playerAudio.clip = deathClip;
+        playerAudio.Play ();
     }
 }

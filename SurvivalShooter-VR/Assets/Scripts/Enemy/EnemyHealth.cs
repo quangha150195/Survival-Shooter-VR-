@@ -74,7 +74,7 @@ public class EnemyHealth : MonoBehaviour
         GetComponent <NavMeshAgent> ().enabled = false;
         GetComponent <Rigidbody> ().isKinematic = true;
         isSinking = true;
-        EnemyManager.m_ListEnemy.Remove(gameObject);
+        EnemyManager.m_numCurrentEnemy--;
         Destroy (gameObject, 2f);
         GameController.score++;
     }

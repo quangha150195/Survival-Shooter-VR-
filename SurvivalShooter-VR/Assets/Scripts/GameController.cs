@@ -168,7 +168,7 @@ public class GameController : MonoBehaviour {
     {   
         timeFadeOver += Time.deltaTime;
         m_player.GetComponent<PlayerController>().m_speed = 0;
-        EnemyManager.instance.maxEnemy = 0;
+        EnemyManager.instance.m_maxEnemy = 0;
         GameObject[] listEnemy = GameObject.FindGameObjectsWithTag("Enemy");
         foreach(GameObject _enemy in listEnemy)
         {
