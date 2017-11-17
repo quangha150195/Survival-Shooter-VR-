@@ -86,14 +86,14 @@ public class MenuManager : MonoBehaviour {
         }
     }
 
-    public void Play()
+    public void Play(string _nameScene)
     {
-        StartCoroutine(loadScene());
+        StartCoroutine(loadScene(_nameScene));
     }
     
-    IEnumerator loadScene()
+    IEnumerator loadScene(string _nameScene)
     {
-        AsyncOperation asyncLoad = SceneManager.LoadSceneAsync("Lv1");
+        AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(_nameScene);
         while (!asyncLoad.isDone)
         {          
             yield return null;
