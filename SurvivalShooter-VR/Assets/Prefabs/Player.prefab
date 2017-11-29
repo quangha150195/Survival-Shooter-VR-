@@ -448,14 +448,14 @@ GameObject:
   - 33: {fileID: 3314752}
   - 23: {fileID: 2334334}
   - 65: {fileID: 6538216}
-  - 95: {fileID: 9583368}
+  - 95: {fileID: 9551454}
   m_Layer: 0
   m_Name: wood
-  m_TagString: Untagged
+  m_TagString: Wood
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!1 &155696
 GameObject:
   m_ObjectHideFlags: 1
@@ -1598,7 +1598,7 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
---- !u!95 &9583368
+--- !u!95 &9551454
 Animator:
   serializedVersion: 3
   m_ObjectHideFlags: 1

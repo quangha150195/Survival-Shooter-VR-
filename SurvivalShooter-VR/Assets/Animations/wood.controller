@@ -8,8 +8,8 @@ AnimatorController:
   m_Name: wood
   serializedVersion: 5
   m_AnimatorParameters:
-  - m_Name: isFight
-    m_Type: 4
+  - m_Name: Fight
+    m_Type: 9
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
@@ -56,7 +56,7 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 1
-    m_ConditionEvent: isFight
+    m_ConditionEvent: Fight
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 110283124}

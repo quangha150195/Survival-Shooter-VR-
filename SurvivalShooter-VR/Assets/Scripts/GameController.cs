@@ -94,7 +94,21 @@ public class GameController : MonoBehaviour {
                 {
                     gun.SetActive(false);
                     m_gun.SetActive(true);
+                    m_Wood.SetActive(false);
                     m_isGun = true;
+                }
+            }
+
+            if (hit.collider.tag == "Wood" && GvrViewer.Instance.Triggered)
+            {
+                GameObject wood = hit.collider.gameObject;
+                float distance = Vector3.Distance(wood.transform.position, m_player.transform.position);
+                if (distance < 3.0f)
+                {
+                    wood.SetActive(false);
+                    m_gun.SetActive(false);
+                    m_Wood.SetActive(true);
+                    m_isGun = false;
                 }
             }
 
