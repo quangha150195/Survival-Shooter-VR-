@@ -50,6 +50,11 @@ public class GameController : MonoBehaviour {
     [SerializeField]
     private AudioClip m_SoundRaycast;
 
+    [Header("Animation")]
+    [SerializeField]
+    private GameObject m_Wood;
+
+    Animator m_Animatormanager;
     AudioSource m_SoundManager;
     private float timeFadeOver = 0;
     private bool _checkOneShot = true;
@@ -57,6 +62,8 @@ public class GameController : MonoBehaviour {
     void Start ()
     {
         m_SoundManager = gameObject.GetComponent<AudioSource>();
+        m_Animatormanager = m_Wood.GetComponent<Animator>();
+       
         startPositionPlayer = m_player.transform.position;
         score = 0;
         m_isGun = false;
@@ -91,10 +98,17 @@ public class GameController : MonoBehaviour {
                 }
             }
 
-            if (hit.collider.tag == "Enemy" && m_isGun)
+            if (hit.collider.tag == "Enemy")
             {
-                Shoot();
                 enemy = hit.collider.gameObject;
+                if(m_isGun)
+                {
+                  Shoot();
+                }
+                else
+                {
+                  m_Animatormanager.SetTrigger("Fight");
+                }
             }
 
             if (hit.collider.tag == "VRMenu")
