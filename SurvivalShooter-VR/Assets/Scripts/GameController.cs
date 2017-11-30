@@ -121,12 +121,12 @@ public class GameController : MonoBehaviour {
                 }
                 else
                 {
-                  m_Animatormanager.SetTrigger("Fight");
+                  m_Animatormanager.SetBool("Fight", true);
                 }
             }
             else 
             {
-              m_Animatormanager.SetTrigger("NotFight");
+                m_Animatormanager.SetBool("Fight", false);           
             }
 
             if (hit.collider.tag == "VRMenu")
