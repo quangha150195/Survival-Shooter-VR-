@@ -4256,7 +4256,7 @@ Prefab:
       propertyPath: m_RootOrder
       value: 4
       objectReference: {fileID: 0}
-    - target: {fileID: 11478114, guid: a08d8cde8a61a9c498442a4aed61bf0f, type: 2}
+    - target: {fileID: 11469020, guid: a08d8cde8a61a9c498442a4aed61bf0f, type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 651948648}
@@ -4264,7 +4264,7 @@ Prefab:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 651948648}
-    - target: {fileID: 11469020, guid: a08d8cde8a61a9c498442a4aed61bf0f, type: 2}
+    - target: {fileID: 11478114, guid: a08d8cde8a61a9c498442a4aed61bf0f, type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 651948648}
