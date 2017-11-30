@@ -124,6 +124,10 @@ public class GameController : MonoBehaviour {
                   m_Animatormanager.SetTrigger("Fight");
                 }
             }
+            else 
+            {
+              m_Animatormanager.SetTrigger("NotFight");
+            }
 
             if (hit.collider.tag == "VRMenu")
             {
