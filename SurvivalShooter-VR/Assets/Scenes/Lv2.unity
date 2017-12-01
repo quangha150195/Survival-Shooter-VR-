@@ -4276,7 +4276,16 @@ Prefab:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 154592, guid: a08d8cde8a61a9c498442a4aed61bf0f, type: 2}
+      propertyPath: m_Name
+      value: Wood
+      objectReference: {fileID: 0}
+    - target: {fileID: 6538216, guid: a08d8cde8a61a9c498442a4aed61bf0f, type: 2}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 6538216, guid: a08d8cde8a61a9c498442a4aed61bf0f, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: a08d8cde8a61a9c498442a4aed61bf0f, type: 2}
   m_IsPrefabParent: 0
 --- !u!1001 &162161955
@@ -33620,6 +33629,18 @@ Transform:
 GameObject:
   m_PrefabParentObject: {fileID: 154592, guid: a08d8cde8a61a9c498442a4aed61bf0f, type: 2}
   m_PrefabInternal: {fileID: 159172733}
+--- !u!64 &1672745663
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1672745660}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Convex: 1
+  m_Mesh: {fileID: 4300000, guid: 4fabcb042d2c1264eb65c893cae6ef95, type: 3}
 --- !u!1001 &1674850842
 Prefab:
   m_ObjectHideFlags: 0

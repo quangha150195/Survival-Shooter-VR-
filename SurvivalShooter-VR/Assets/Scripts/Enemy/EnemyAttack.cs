@@ -6,19 +6,19 @@ public class EnemyAttack : MonoBehaviour
     public float timeBetweenAttacks = 1.0f;
     public int attackDamage = 5;
 
-    Animator anim;
     GameObject player;
+    GameObject Wood;
     PlayerHealth playerHealth;
     EnemyHealth enemyHealth;
     bool playerInRange;
     float timer;
+    bool woodHit;
 
     void Awake ()
     {
         player = GameObject.FindGameObjectWithTag ("Player");
         playerHealth = player.GetComponent <PlayerHealth> ();
         enemyHealth = GetComponent<EnemyHealth>();
-        anim = GetComponent <Animator> ();
     }
 
 
@@ -26,10 +26,23 @@ public class EnemyAttack : MonoBehaviour
     {
         if(other.gameObject == player)
         {
-            playerInRange = true;
+            playerInRange = true;         
         }
+        else if(other.gameObject.tag == "Wood")
+        {
+          woodHit = true;
+          enemyHealth.Death();       
+        } 
     }
 
+    void OnCollisionEnter(Collision other)
+    {
+        if(other.gameObject.tag == "Wood")
+            {
+              woodHit = true;
+              enemyHealth.Death();       
+            } 
+    }
 
     void OnTriggerExit (Collider other)
     {
@@ -37,6 +50,10 @@ public class EnemyAttack : MonoBehaviour
         {
             playerInRange = false;
         }
+        else if(other.gameObject == Wood)
+        {
+          woodHit = false;        
+        } 
     }
 
 
