@@ -13,7 +13,7 @@ public class GameController : MonoBehaviour {
     public GameObject m_slider;
 
     public bool m_isFx;
-    public float m_speedShoot;
+    private float m_speedShoot;
     public GameObject m_fx;
     public GameObject recticle;
 
@@ -58,6 +58,7 @@ public class GameController : MonoBehaviour {
     AudioSource m_SoundManager;
     private float timeFadeOver = 0;
     private bool _checkOneShot = true;
+    private bool m_isAttack = false;
 
     void Start ()
     {
@@ -73,6 +74,15 @@ public class GameController : MonoBehaviour {
         gunLight = objLight.GetComponent<Light>();
         faceLight = objLight.GetComponentInChildren<Light>();
         gunLine = objLight.GetComponent<LineRenderer>();
+
+        if(PlayerController.is_useGamePad)
+        {
+            m_speedShoot = 0.1f;
+        }
+        else
+        {
+            m_speedShoot = 0.001f;
+        }
 	}
 
     void Update()
@@ -82,11 +92,36 @@ public class GameController : MonoBehaviour {
 
         ///////////////////////////////////
         m_fx.SetActive(m_isFx);
-        
+
+        if (Input.GetButton("ShootButton") || GvrViewer.Instance.Triggered)
+        {
+            m_isAttack = true;
+        }
+        else
+        {
+            m_isAttack = false;
+            Effect(false);
+        }
+
+        if(m_isAttack)
+        {
+            //Attack
+            if (m_isGun)
+            {
+                Debug.Log("Shoot");
+                Shoot();
+                m_gun.GetComponent<Animator>().SetBool("Shoot", true);
+            }
+            else
+            {
+                m_Animatormanager.SetBool("Fight", true);
+            }
+        }
+
         Physics.Raycast(recticle.transform.position, recticle.transform.forward, out hit);
         if(hit.collider!=null)
         {
-            if (hit.collider.tag == "Gun" && GvrViewer.Instance.Triggered)
+            if (hit.collider.tag == "Gun" && (GvrViewer.Instance.Triggered || Input.GetButton("PickButton")))
             {
                 GameObject gun = hit.collider.gameObject;
                 float distance = Vector3.Distance(gun.transform.position, m_player.transform.position);
@@ -99,7 +134,7 @@ public class GameController : MonoBehaviour {
                 }
             }
 
-            if (hit.collider.tag == "Wood" && GvrViewer.Instance.Triggered)
+            if (hit.collider.tag == "Wood" && (GvrViewer.Instance.Triggered || Input.GetButton("PickButton")))
             {
                 GameObject wood = hit.collider.gameObject;
                 float distance = Vector3.Distance(wood.transform.position, m_player.transform.position);
@@ -112,18 +147,9 @@ public class GameController : MonoBehaviour {
                 }
             }
 
-            if (hit.collider.tag == "Enemy")
+            if (m_isAttack && hit.collider.tag == "Enemy")
             {
                 enemy = hit.collider.gameObject;
-                if(m_isGun)
-                {
-                  Shoot();
-                  m_gun.GetComponent<Animator>().SetBool("Shoot", true);
-                }
-                else
-                {
-                  m_Animatormanager.SetBool("Fight", true);
-                }
             }
             else 
             {
@@ -152,13 +178,6 @@ public class GameController : MonoBehaviour {
             {
                 _checkOneShot = true;
                 Scale_ButtonMenu();
-            }
-
-            if (hit.collider.tag == "Untagged")
-            {
-                
-                m_isEffect = false;
-                Effect(m_isEffect);
             }
         }
 
@@ -235,10 +254,10 @@ public class GameController : MonoBehaviour {
             
     }
 
-    public void OverButton(string _nameFunction)
+    public void OverButton()
     {
         iTween.ScaleTo(m_GameOver, iTween.Hash("x", 0, "y", 0, "time", 0.3f));
-        SceneManager.LoadScene(_nameFunction);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
     private void Scale_ButtonMenu()

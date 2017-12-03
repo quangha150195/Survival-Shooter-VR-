@@ -50,7 +50,6 @@ public class MenuManager : MonoBehaviour {
             {
                 m_SoundManager.PlayOneShot(m_SoundClick);
                 hit.collider.gameObject.transform.localScale = new Vector3(1, 1, 1);
-                m_Player.GetComponent<PlayerController>().m_move = true;
                 _thisButton.GetComponent<Button>().onClick.Invoke();
             }
         }

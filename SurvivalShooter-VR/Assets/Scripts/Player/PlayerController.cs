@@ -9,6 +9,7 @@ public class PlayerController : MonoBehaviour {
     private Rigidbody m_playerRigid;
     private Vector3 m_forward;
     private float m_y;
+    public static bool is_useGamePad = false;
 
 	void Start ()
     {
@@ -18,21 +19,54 @@ public class PlayerController : MonoBehaviour {
 
         //Set pos y original
         m_y = m_head.transform.forward.y;
+        m_move = true;
     }
 	
     void Update()
     {
-        if(GvrViewer.Instance.Triggered)
-        {
-            m_move = !m_move;
-        }
-
         if (m_move)
         {
-            m_forward = m_head.transform.forward;
-            m_forward.y = m_y;
+            if (!is_useGamePad)
+            {
+                m_forward = m_head.transform.forward;
+                m_forward.y = m_y;
 
-            m_playerRigid.velocity = m_forward * m_speed;
+                m_playerRigid.velocity = m_forward * m_speed;
+            }
+            else
+            {
+                if (Input.GetButton("YButton"))
+                {
+                    m_forward = m_head.transform.forward;
+                    m_forward.y = m_y;
+                    m_playerRigid.velocity = m_forward * m_speed;
+                }
+                else
+                if (Input.GetButton("AButton"))
+                {
+                    m_forward = m_head.transform.forward;
+                    m_forward.y = m_y;
+                    m_playerRigid.velocity = -m_forward * m_speed;
+                }
+                else
+                if (Input.GetButton("XButton"))
+                {
+                    m_forward = m_head.transform.right;
+                    m_forward.y = m_y;
+                    m_playerRigid.velocity = -m_forward * m_speed;
+                }
+                else
+                if (Input.GetButton("BButton"))
+                {
+                    m_forward = m_head.transform.right;
+                    m_forward.y = m_y;
+                    m_playerRigid.velocity = m_forward * m_speed;
+                }
+                else
+                {
+                    m_playerRigid.velocity = Vector3.zero;
+                }
+            }
         }
         else
         {

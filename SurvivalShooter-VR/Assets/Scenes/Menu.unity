@@ -10500,9 +10500,6 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 2124939229}
-  - 54: {fileID: 2124939228}
-  - 136: {fileID: 2124939227}
-  - 114: {fileID: 2124939226}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -10510,51 +10507,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &2124939226
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 11483864, guid: a08d8cde8a61a9c498442a4aed61bf0f,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 2124939224}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 39b86fb657262cb4f84cc3ff1a00a24c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_move: 0
-  m_speed: 1.5
-  m_head: {fileID: 182315836}
---- !u!136 &2124939227
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 13638716, guid: a08d8cde8a61a9c498442a4aed61bf0f,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 2124939224}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.5
-  m_Height: 2.44
-  m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!54 &2124939228
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 5443444, guid: a08d8cde8a61a9c498442a4aed61bf0f,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 2124939224}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 1
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 116
-  m_CollisionDetection: 0
 --- !u!4 &2124939229
 Transform:
   m_ObjectHideFlags: 0
