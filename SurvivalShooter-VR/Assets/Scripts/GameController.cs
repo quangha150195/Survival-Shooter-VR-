@@ -96,11 +96,13 @@ public class GameController : MonoBehaviour {
         if (Input.GetButton("ShootButton") || GvrViewer.Instance.Triggered)
         {
             m_isAttack = true;
+            m_gun.GetComponent<Animator>().SetBool("Shoot", true);
         }
         else
         {
             m_isAttack = false;
             Effect(false);
+            m_gun.GetComponent<Animator>().SetBool("Shoot", false);  
         }
 
         if(m_isAttack)
@@ -110,7 +112,7 @@ public class GameController : MonoBehaviour {
             {
                 Debug.Log("Shoot");
                 Shoot();
-                m_gun.GetComponent<Animator>().SetBool("Shoot", true);
+
             }
             else
             {
@@ -153,8 +155,7 @@ public class GameController : MonoBehaviour {
             }
             else 
             {
-                m_Animatormanager.SetBool("Fight", false);   
-                m_gun.GetComponent<Animator>().SetBool("Shoot", false);      
+                m_Animatormanager.SetBool("Fight", false);                       
             }
 
             if (hit.collider.tag == "VRMenu")
