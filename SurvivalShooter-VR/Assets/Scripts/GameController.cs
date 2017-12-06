@@ -110,9 +110,7 @@ public class GameController : MonoBehaviour {
             //Attack
             if (m_isGun)
             {
-                Debug.Log("Shoot");
                 Shoot();
-
             }
             else
             {
@@ -258,7 +256,7 @@ public class GameController : MonoBehaviour {
     public void OverButton()
     {
         iTween.ScaleTo(m_GameOver, iTween.Hash("x", 0, "y", 0, "time", 0.3f));
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex, LoadSceneMode.Single);
     }
 
     private void Scale_ButtonMenu()

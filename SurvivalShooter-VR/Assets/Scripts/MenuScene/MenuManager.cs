@@ -87,7 +87,7 @@ public class MenuManager : MonoBehaviour {
 
     public void Play(string _nameScene)
     {
-        StartCoroutine(loadScene(_nameScene));
+        SceneManager.LoadScene(_nameScene, LoadSceneMode.Single);
     }
     
     IEnumerator loadScene(string _nameScene)
