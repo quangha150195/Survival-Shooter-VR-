@@ -12,9 +12,7 @@ public class GameController : MonoBehaviour {
     public GameObject m_iconHealth;
     public GameObject m_slider;
 
-    public bool m_isFx;
     private float m_speedShoot;
-    public GameObject m_fx;
     public GameObject recticle;
 
     public GameObject objLight;
@@ -35,6 +33,7 @@ public class GameController : MonoBehaviour {
     public static int score;
     public Text txtScore;
     public Text txtScoreOver;
+    public Text txtScoreWin;
 
     [SerializeField]
     private GameObject m_FadeforDie;
@@ -42,7 +41,8 @@ public class GameController : MonoBehaviour {
     private float timeFade = 2;
     [SerializeField]
     private GameObject m_GameOver;
-
+    [SerializeField]
+    private GameObject m_GameWin;
 
     [Header("Audio")]
     [SerializeField]
@@ -60,8 +60,20 @@ public class GameController : MonoBehaviour {
     private bool _checkOneShot = true;
     private bool m_isAttack = false;
 
+    [SerializeField]
+    private int m_scoreToWin;
+    private State m_currentState;
+
+    enum State
+    {
+        running,
+        win, 
+        over
+    };
+
     void Start ()
     {
+        m_currentState = State.running;
         m_SoundManager = gameObject.GetComponent<AudioSource>();
         m_Animatormanager = m_Wood.GetComponent<Animator>();
        
@@ -91,9 +103,8 @@ public class GameController : MonoBehaviour {
         txtScore.text = score.ToString() + " / ";
 
         ///////////////////////////////////
-        m_fx.SetActive(m_isFx);
 
-        if (Input.GetButton("ShootButton") || GvrViewer.Instance.Triggered)
+        if ((Input.GetButton("ShootButton") || GvrViewer.Instance.Triggered) && (m_currentState == State.running))
         {
             m_isAttack = true;
             m_gun.GetComponent<Animator>().SetBool("Shoot", true);
@@ -102,10 +113,10 @@ public class GameController : MonoBehaviour {
         {
             m_isAttack = false;
             Effect(false);
-            m_gun.GetComponent<Animator>().SetBool("Shoot", false);  
+            m_gun.GetComponent<Animator>().SetBool("Shoot", false);
         }
 
-        if(m_isAttack)
+        if (m_isAttack)
         {
             //Attack
             if (m_isGun)
@@ -182,9 +193,15 @@ public class GameController : MonoBehaviour {
 
         if(PlayerHealth.instance.isDead)
         {
-            CanvasOver(timeFade);
+            m_currentState = State.over;
+            ShowCanvas(timeFade, State.over);
         }
        
+        if(score == m_scoreToWin)
+        {
+            m_currentState = State.win;
+            ShowCanvas(timeFade, State.win);
+        }
     }
 	
     void Effect(bool b)
@@ -216,7 +233,7 @@ public class GameController : MonoBehaviour {
         }
     }
 
-    public void CanvasOver(float _timer)
+    void ShowCanvas(float _timer, State _s)
     {   
         timeFadeOver += Time.deltaTime;
         m_player.GetComponent<PlayerController>().m_speed = 0;
@@ -234,12 +251,22 @@ public class GameController : MonoBehaviour {
         else
         {
             m_gun.SetActive(false);
-            m_GameOver.SetActive(true);
+
+            if(_s == State.over)
+            {
+                m_GameOver.SetActive(true);
+            }
+            else
+            {
+                m_GameWin.SetActive(true);
+            }
+
             txtScore.gameObject.SetActive(false);
             m_icon.SetActive(false);
             m_iconHealth.SetActive(false);
             m_slider.SetActive(false);
             txtScoreOver.text = score.ToString();
+            txtScoreWin.text = score.ToString();
 
             m_player.transform.position = startPositionPlayer;
             m_FadeforDie.GetComponent<CanvasGroup>().alpha -= Time.deltaTime / (_timer * 1.2f);
@@ -248,15 +275,28 @@ public class GameController : MonoBehaviour {
         if (m_FadeforDie.GetComponent<CanvasGroup>().alpha == 0)
         {
             PlayerHealth.instance.isDead = false;          
-            Debug.Log("Exit GameOver Fade");
         }
-            
     }
 
     public void OverButton()
     {
         iTween.ScaleTo(m_GameOver, iTween.Hash("x", 0, "y", 0, "time", 0.3f));
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex, LoadSceneMode.Single);
+    }
+
+    public void NextButton()
+    {
+        iTween.ScaleTo(m_GameOver, iTween.Hash("x", 0, "y", 0, "time", 0.3f));
+        if (SceneManager.GetActiveScene().buildIndex == 1)
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1, LoadSceneMode.Single);
+        }
+    }
+
+    public void Menu()
+    {
+        iTween.ScaleTo(m_GameOver, iTween.Hash("x", 0, "y", 0, "time", 0.3f));
+        SceneManager.LoadScene("Menu", LoadSceneMode.Single);
     }
 
     private void Scale_ButtonMenu()
