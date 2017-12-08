@@ -108,12 +108,14 @@ public class GameController : MonoBehaviour {
         {
             m_isAttack = true;
             m_gun.GetComponent<Animator>().SetBool("Shoot", true);
+            m_Wood.GetComponent<Animator>().SetBool("Fight", true);
         }
         else
         {
             m_isAttack = false;
             Effect(false);
             m_gun.GetComponent<Animator>().SetBool("Shoot", false);
+            m_Animatormanager.SetBool("Fight", false);
         }
 
         if (m_isAttack)
@@ -122,10 +124,6 @@ public class GameController : MonoBehaviour {
             if (m_isGun)
             {
                 Shoot();
-            }
-            else
-            {
-                m_Animatormanager.SetBool("Fight", true);
             }
         }
 
@@ -161,10 +159,6 @@ public class GameController : MonoBehaviour {
             if (m_isAttack && hit.collider.tag == "Enemy")
             {
                 enemy = hit.collider.gameObject;
-            }
-            else 
-            {
-                m_Animatormanager.SetBool("Fight", false);                       
             }
 
             if (hit.collider.tag == "VRMenu")
