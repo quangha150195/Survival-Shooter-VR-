@@ -31,18 +31,18 @@ public class EnemyAttack : MonoBehaviour
         else if(other.gameObject.tag == "Wood")
         {
           woodHit = true;
-          enemyHealth.Death();       
+          enemyHealth.TakeDamage(20, this.gameObject.transform.position);
         } 
     }
 
-    void OnCollisionEnter(Collision other)
-    {
-        if(other.gameObject.tag == "Wood")
-            {
-              woodHit = true;
-              enemyHealth.Death();       
-            } 
-    }
+    //void OnCollisionEnter(Collision other)
+    //{
+    //    if(other.gameObject.tag == "Wood")
+    //        {
+    //          woodHit = true;
+    //          enemyHealth.TakeDamage(20, this.gameObject.transform.position);       
+    //        } 
+    //}
 
     void OnTriggerExit (Collider other)
     {
