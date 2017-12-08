@@ -7212,7 +7212,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 498412, guid: 970dd4b9371394fb4890965f608d46fd, type: 2}
       propertyPath: m_RootOrder
-      value: 10
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 11414954, guid: 970dd4b9371394fb4890965f608d46fd, type: 2}
       propertyPath: viewerType
@@ -16748,6 +16748,33 @@ Prefab:
 Transform:
   m_PrefabParentObject: {fileID: 441204, guid: d9e646e2c9066a94cb48626d84dc1ba6, type: 2}
   m_PrefabInternal: {fileID: 827593750}
+--- !u!1 &830818011
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 830818012}
+  m_Layer: 0
+  m_Name: EnemySpawnPoint5
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &830818012
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 830818011}
+  m_LocalRotation: {x: 0, y: -0.721156, z: 0, w: 0.6927727}
+  m_LocalPosition: {x: 35.9, y: -6.18668, z: 22}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1297980178}
+  m_RootOrder: 4
 --- !u!1001 &835835465
 Prefab:
   m_ObjectHideFlags: 0
@@ -24127,11 +24154,13 @@ MonoBehaviour:
   enemy:
   - {fileID: 100000, guid: ffdde77c7de2ec246907b187471ed7d0, type: 2}
   - {fileID: 100002, guid: c539e831d0e12a243bc663295b7958a1, type: 2}
+  - {fileID: 153412, guid: 2f8e5dcb17eda3542bf9cd4ef63425e3, type: 2}
   spawnPoints:
   - {fileID: 962506383}
   - {fileID: 129256366}
   - {fileID: 993763245}
   - {fileID: 2023743171}
+  - {fileID: 830818012}
 --- !u!4 &1171197908
 Transform:
   m_ObjectHideFlags: 0
@@ -27034,6 +27063,7 @@ Transform:
   - {fileID: 129256366}
   - {fileID: 993763245}
   - {fileID: 2023743171}
+  - {fileID: 830818012}
   m_Father: {fileID: 0}
   m_RootOrder: 6
 --- !u!1001 &1301430392

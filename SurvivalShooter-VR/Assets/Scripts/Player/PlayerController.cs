@@ -9,7 +9,7 @@ public class PlayerController : MonoBehaviour {
     private Rigidbody m_playerRigid;
     private Vector3 m_forward;
     private float m_y;
-    public static bool is_useGamePad = false;
+    public static bool is_useGamePad = true;
 
 	void Start ()
     {
@@ -35,6 +35,16 @@ public class PlayerController : MonoBehaviour {
             }
             else
             {
+                //Move fast
+                if (Input.GetButton("MoveFastButton"))
+                {
+                    m_speed = 3.0f;
+                }
+                else
+                {
+                    m_speed = 1.5f;
+                }
+
                 if (Input.GetButton("YButton"))
                 {
                     m_forward = m_head.transform.forward;

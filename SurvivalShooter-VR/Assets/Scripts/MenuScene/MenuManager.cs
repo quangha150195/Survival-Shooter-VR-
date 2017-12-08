@@ -46,7 +46,7 @@ public class MenuManager : MonoBehaviour {
             }
             GameObject _thisButton = hit.collider.gameObject;
             iTween.ScaleTo(_thisButton, iTween.Hash("x", 1.5f, "y", 1.5f, "time", 0.3f));
-            if (GvrViewer.Instance.Triggered)
+            if (GvrViewer.Instance.Triggered || Input.GetButton("ShootButton"))
             {
                 m_SoundManager.PlayOneShot(m_SoundClick);
                 hit.collider.gameObject.transform.localScale = new Vector3(1, 1, 1);

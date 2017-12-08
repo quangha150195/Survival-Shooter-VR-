@@ -344,7 +344,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a9b9d14572410594cb85d40eedfb150c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startingHealth: 100
+  startingHealth: 500
   currentHealth: 0
   sinkSpeed: 2.5
   scoreValue: 10
@@ -361,7 +361,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timeBetweenAttacks: 1
-  attackDamage: 10
+  attackDamage: 20
 --- !u!135 &13536644
 SphereCollider:
   m_ObjectHideFlags: 1
@@ -372,7 +372,7 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 1.65
+  m_Radius: 1.7610177
   m_Center: {x: 0, y: 1.2, z: 0}
 --- !u!135 &13599542
 SphereCollider:
@@ -384,7 +384,7 @@ SphereCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 1.8824834
+  m_Radius: 1.6219882
   m_Center: {x: 0, y: 1.2, z: 0}
 --- !u!137 &13770500
 SkinnedMeshRenderer:
