@@ -17,13 +17,13 @@ public class EnemyMovement : MonoBehaviour
 
     void Update ()
     {
-        if (enemyHealth.currentHealth > 0)
+        if (enemyHealth.currentHealth > 0 && !this.GetComponent<EnemyAttack>().playerInRange)
         {
             nav.SetDestination(player.position);
         }
-        else
-        {
-            nav.enabled = false;
-        }
+        //else
+        //{
+        //    nav.enabled = false;
+        //}
     }
 }

@@ -10,7 +10,7 @@ public class EnemyAttack : MonoBehaviour
     GameObject Wood;
     PlayerHealth playerHealth;
     EnemyHealth enemyHealth;
-    bool playerInRange;
+    public bool playerInRange;
     float timer;
     bool woodHit;
 
@@ -30,8 +30,8 @@ public class EnemyAttack : MonoBehaviour
         }
         else if(other.gameObject.tag == "Wood")
         {
-          woodHit = true;
-          enemyHealth.TakeDamage(20, this.gameObject.transform.position);
+            woodHit = true;
+            enemyHealth.TakeDamage(20, this.gameObject.transform.position);
         } 
     }
 

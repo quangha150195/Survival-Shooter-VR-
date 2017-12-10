@@ -3978,8 +3978,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.6425056, y: 2.9149165, z: 0.23449282}
-  m_Center: {x: -0.8212528, y: 1.4574583, z: 0.1087048}
+  m_Size: {x: 1.6425056, y: 2.9149165, z: 0.13723402}
+  m_Center: {x: -0.82126606, y: 1.4574583, z: 0.06006804}
 --- !u!1001 &139826426
 Prefab:
   m_ObjectHideFlags: 0
@@ -4305,6 +4305,22 @@ Prefab:
       propertyPath: m_RootOrder
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 11407224, guid: a08d8cde8a61a9c498442a4aed61bf0f, type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 651948648}
+    - target: {fileID: 11446448, guid: a08d8cde8a61a9c498442a4aed61bf0f, type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 651948648}
+    - target: {fileID: 11469020, guid: a08d8cde8a61a9c498442a4aed61bf0f, type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 651948648}
+    - target: {fileID: 11478114, guid: a08d8cde8a61a9c498442a4aed61bf0f, type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 651948648}
     - target: {fileID: 22476812, guid: a08d8cde8a61a9c498442a4aed61bf0f, type: 2}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -4312,54 +4328,6 @@ Prefab:
     - target: {fileID: 22476812, guid: a08d8cde8a61a9c498442a4aed61bf0f, type: 2}
       propertyPath: m_AnchorMax.y
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 154592, guid: a08d8cde8a61a9c498442a4aed61bf0f, type: 2}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 174580, guid: a08d8cde8a61a9c498442a4aed61bf0f, type: 2}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 176288, guid: a08d8cde8a61a9c498442a4aed61bf0f, type: 2}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 10846730, guid: a08d8cde8a61a9c498442a4aed61bf0f, type: 2}
-      propertyPath: m_SpotAngle
-      value: 45
-      objectReference: {fileID: 0}
-    - target: {fileID: 11446448, guid: a08d8cde8a61a9c498442a4aed61bf0f, type: 2}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 651948648}
-    - target: {fileID: 11446448, guid: a08d8cde8a61a9c498442a4aed61bf0f, type: 2}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: OverButton
-      objectReference: {fileID: 0}
-    - target: {fileID: 11478114, guid: a08d8cde8a61a9c498442a4aed61bf0f, type: 2}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 651948648}
-    - target: {fileID: 11478114, guid: a08d8cde8a61a9c498442a4aed61bf0f, type: 2}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: Menu
-      objectReference: {fileID: 0}
-    - target: {fileID: 11407224, guid: a08d8cde8a61a9c498442a4aed61bf0f, type: 2}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 651948648}
-    - target: {fileID: 11407224, guid: a08d8cde8a61a9c498442a4aed61bf0f, type: 2}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: Menu
-      objectReference: {fileID: 0}
-    - target: {fileID: 11469020, guid: a08d8cde8a61a9c498442a4aed61bf0f, type: 2}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 651948648}
-    - target: {fileID: 11469020, guid: a08d8cde8a61a9c498442a4aed61bf0f, type: 2}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: NextButton
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a08d8cde8a61a9c498442a4aed61bf0f, type: 2}
@@ -6679,7 +6647,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 400002, guid: e870f12990348ad4b94b4cdb8f09b7a0, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.25
+      value: 7.29
       objectReference: {fileID: 0}
     - target: {fileID: 400002, guid: e870f12990348ad4b94b4cdb8f09b7a0, type: 3}
       propertyPath: m_LocalPosition.y
@@ -6687,23 +6655,23 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400002, guid: e870f12990348ad4b94b4cdb8f09b7a0, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 1.8199997
+      value: 8.74
       objectReference: {fileID: 0}
     - target: {fileID: 400002, guid: e870f12990348ad4b94b4cdb8f09b7a0, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0.051179387
+      value: -0.049842104
       objectReference: {fileID: 0}
     - target: {fileID: 400002, guid: e870f12990348ad4b94b4cdb8f09b7a0, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.74527913
+      value: 0.7163917
       objectReference: {fileID: 0}
     - target: {fileID: 400002, guid: e870f12990348ad4b94b4cdb8f09b7a0, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.6631003
+      value: 0.69420284
       objectReference: {fileID: 0}
     - target: {fileID: 400002, guid: e870f12990348ad4b94b4cdb8f09b7a0, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.047303915
+      value: 0.048795708
       objectReference: {fileID: 0}
     - target: {fileID: 400002, guid: e870f12990348ad4b94b4cdb8f09b7a0, type: 3}
       propertyPath: m_RootOrder
@@ -18625,7 +18593,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 896354380}
   m_LocalRotation: {x: 0, y: 0, z: -0.02488482, w: 0.99969035}
-  m_LocalPosition: {x: 8.967, y: 1.443, z: -0.040000916}
+  m_LocalPosition: {x: 19.1, y: 1.51, z: 23.86}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 53620416}
