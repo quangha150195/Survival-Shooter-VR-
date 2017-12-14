@@ -87,7 +87,7 @@ public class GameController : MonoBehaviour {
         faceLight = objLight.GetComponentInChildren<Light>();
         gunLine = objLight.GetComponent<LineRenderer>();
 
-        if(PlayerController.is_useGamePad)
+        if(MenuManager.isGamePad)
         {
             m_speedShoot = 0.1f;
         }

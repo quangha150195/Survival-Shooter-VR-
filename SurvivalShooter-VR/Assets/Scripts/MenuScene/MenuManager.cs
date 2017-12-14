@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 
 public class MenuManager : MonoBehaviour {
-
+    public static MenuManager instance;
     [SerializeField]
     private GameObject m_Player;
     [SerializeField]
@@ -13,9 +13,12 @@ public class MenuManager : MonoBehaviour {
     [SerializeField]
     private GameObject m_BtnGroup;
     [SerializeField]
-    private GameObject m_BtnAbout;
-    [SerializeField]
     private GameObject m_BtnSelectLevel;
+    [SerializeField]
+    private GameObject checkNormal;
+    [SerializeField]
+    private GameObject checkGamepad;
+
 
     [Header("Audio")]
     [SerializeField]
@@ -23,6 +26,7 @@ public class MenuManager : MonoBehaviour {
     [SerializeField]
     private AudioClip m_SoundRaycast;
 
+    public static bool isGamePad;
     AudioSource m_SoundManager;
     RaycastHit hit;
 
@@ -30,6 +34,10 @@ public class MenuManager : MonoBehaviour {
     // Use this for initialization
     void Start() {
         m_SoundManager = gameObject.GetComponent<AudioSource>();
+        instance = this;
+        isGamePad = false;
+        checkNormal.SetActive(true);
+        checkGamepad.SetActive(false);
     }
 
     // Update is called once per frame
@@ -44,8 +52,8 @@ public class MenuManager : MonoBehaviour {
                 m_SoundManager.PlayOneShot(m_SoundRaycast);
                 _checkOneShot = false;
             }
-            GameObject _thisButton = hit.collider.gameObject;
-            iTween.ScaleTo(_thisButton, iTween.Hash("x", 1.5f, "y", 1.5f, "time", 0.3f));
+            GameObject _thisButton = hit.collider.gameObject;          
+            iTween.ScaleTo(_thisButton, iTween.Hash("x", 1.3f, "y", 1.3f, "time", 0.25f));
             if (GvrViewer.Instance.Triggered || Input.GetButton("ShootButton"))
             {
                 m_SoundManager.PlayOneShot(m_SoundClick);
@@ -81,7 +89,7 @@ public class MenuManager : MonoBehaviour {
         GameObject[] _buttonMenu = GameObject.FindGameObjectsWithTag("VRMenu");
         foreach (GameObject a in _buttonMenu)
         {
-            iTween.ScaleTo(a, iTween.Hash("x", 1.0f, "y", 1.0f, "time", 0.3f));
+            iTween.ScaleTo(a, iTween.Hash("x", 1.0f, "y", 0.9f, "time", 0.25f));
         }
     }
 
@@ -97,5 +105,22 @@ public class MenuManager : MonoBehaviour {
         {          
             yield return null;
         }
+    }
+
+    public void chooseGamePad()
+    {
+        checkGamepad.SetActive(true);
+        checkGamepad.transform.localScale = Vector3.zero;
+        isGamePad = true;
+        iTween.ScaleTo(checkGamepad, Vector3.one, 0.25f);
+        iTween.ScaleTo(checkNormal, Vector3.zero, 0.25f);
+    }
+
+    public void chooseNormal()
+    {
+        checkNormal.transform.localScale = Vector3.zero;
+        isGamePad = false;
+        iTween.ScaleTo(checkGamepad, Vector3.zero, 0.25f);
+        iTween.ScaleTo(checkNormal, Vector3.one, 0.25f);
     }
 }

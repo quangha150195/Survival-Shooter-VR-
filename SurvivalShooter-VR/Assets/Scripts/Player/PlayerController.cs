@@ -9,7 +9,6 @@ public class PlayerController : MonoBehaviour {
     private Rigidbody m_playerRigid;
     private Vector3 m_forward;
     private float m_y;
-    public static bool is_useGamePad = true;
 
 	void Start ()
     {
@@ -26,7 +25,7 @@ public class PlayerController : MonoBehaviour {
     {
         if (m_move)
         {
-            if (!is_useGamePad)
+            if (!MenuManager.isGamePad)
             {
                 m_forward = m_head.transform.forward;
                 m_forward.y = m_y;
