@@ -2960,7 +2960,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 136, y: 154, z: 1}
+  m_Size: {x: 136, y: 154, z: 154}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &385854473
 MonoBehaviour:
@@ -7931,7 +7931,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 136, y: 154, z: 1}
+  m_Size: {x: 136, y: 154, z: 154}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1356518774 stripped
 GameObject:
@@ -11658,7 +11658,7 @@ GameObject:
   - 114: {fileID: 2090429480}
   m_Layer: 5
   m_Name: SelectLevel
-  m_TagString: VRMenu
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -11679,10 +11679,10 @@ RectTransform:
   - {fileID: 1712072615}
   m_Father: {fileID: 1968184281}
   m_RootOrder: 1
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 443.6927, y: -896.75214}
-  m_SizeDelta: {x: 887.385, y: 1793.505}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2090429480
 MonoBehaviour:
