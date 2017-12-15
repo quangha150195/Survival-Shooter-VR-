@@ -210,6 +210,8 @@ public class GameController : MonoBehaviour {
 
     void Shoot()
     {
+        SoundController.Sound.Shoot();
+
         m_timer += Time.deltaTime;
 
         if (m_timer > m_speedShoot)

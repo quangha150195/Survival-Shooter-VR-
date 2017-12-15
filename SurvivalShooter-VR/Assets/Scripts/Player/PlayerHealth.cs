@@ -7,9 +7,7 @@ public class PlayerHealth : MonoBehaviour
     public int startingHealth = 100;
     public int currentHealth;
     public Slider healthSlider;
-    public AudioClip deathClip;
     public Animator blood;
-    AudioSource playerAudio;
     public bool isDead;
     bool damaged;
 
@@ -17,7 +15,6 @@ public class PlayerHealth : MonoBehaviour
 
     void Awake ()
     {
-        playerAudio = GetComponent <AudioSource> ();
         currentHealth = startingHealth;
         instance = this;
     }
@@ -38,7 +35,7 @@ public class PlayerHealth : MonoBehaviour
 
         healthSlider.value = currentHealth;
 
-        playerAudio.Play ();
+        SoundController.Sound.PlayerHurt();
 
         if(currentHealth <= 0 && !isDead)
         {
@@ -52,7 +49,6 @@ public class PlayerHealth : MonoBehaviour
         isDead = true;
         PlayerController.instance.m_move = false;
 
-        playerAudio.clip = deathClip;
-        playerAudio.Play ();
+        SoundController.Sound.PlayerDeath();
     }
 }

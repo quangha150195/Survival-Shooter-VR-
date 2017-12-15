@@ -19,21 +19,13 @@ public class MenuManager : MonoBehaviour {
     [SerializeField]
     private GameObject checkGamepad;
 
-
-    [Header("Audio")]
-    [SerializeField]
-    private AudioClip m_SoundClick;
-    [SerializeField]
-    private AudioClip m_SoundRaycast;
-
     public static bool isGamePad;
-    AudioSource m_SoundManager;
     RaycastHit hit;
 
     private bool _checkOneShot = true;
     // Use this for initialization
     void Start() {
-        m_SoundManager = gameObject.GetComponent<AudioSource>();
+        MusicController.Music.BG_menu();
         instance = this;
         isGamePad = false;
         checkNormal.SetActive(true);
@@ -49,14 +41,14 @@ public class MenuManager : MonoBehaviour {
         {
             if (_checkOneShot)
             {
-                m_SoundManager.PlayOneShot(m_SoundRaycast);
+                SoundController.Sound.Raycast();
                 _checkOneShot = false;
             }
             GameObject _thisButton = hit.collider.gameObject;          
             iTween.ScaleTo(_thisButton, iTween.Hash("x", 1.3f, "y", 1.3f, "time", 0.25f));
             if (GvrViewer.Instance.Triggered || Input.GetButton("ShootButton"))
             {
-                m_SoundManager.PlayOneShot(m_SoundClick);
+                SoundController.Sound.Click();
                 hit.collider.gameObject.transform.localScale = new Vector3(1, 1, 1);
                 _thisButton.GetComponent<Button>().onClick.Invoke();
             }
@@ -96,6 +88,7 @@ public class MenuManager : MonoBehaviour {
     public void Play(string _nameScene)
     {
         SceneManager.LoadScene(_nameScene, LoadSceneMode.Single);
+        MusicController.Music.BG_play();
     }
     
     IEnumerator loadScene(string _nameScene)
