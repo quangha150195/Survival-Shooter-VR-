@@ -18,6 +18,10 @@ public class MenuManager : MonoBehaviour {
     private GameObject checkNormal;
     [SerializeField]
     private GameObject checkGamepad;
+    [SerializeField]
+    private GameObject m_Loading;
+    [SerializeField]
+    private Text txtLoading;
 
     public static bool isGamePad;
     RaycastHit hit;
@@ -87,15 +91,21 @@ public class MenuManager : MonoBehaviour {
 
     public void Play(string _nameScene)
     {
-        SceneManager.LoadScene(_nameScene, LoadSceneMode.Single);
+        //SceneManager.LoadScene(_nameScene, LoadSceneMode.Single);
+        StartCoroutine(loadScene(_nameScene));
         MusicController.Music.BG_play();
+
     }
     
     IEnumerator loadScene(string _nameScene)
     {
-        AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(_nameScene);
+        m_Loading.SetActive(true);
+        AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(_nameScene, LoadSceneMode.Single);
         while (!asyncLoad.isDone)
-        {          
+        {     
+            float progress = asyncLoad.progress;
+            m_Loading.GetComponentInChildren<Scrollbar>().size = progress;     
+            txtLoading.text = (progress*100).ToString("0") + "%";
             yield return null;
         }
     }
