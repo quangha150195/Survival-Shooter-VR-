@@ -1944,6 +1944,10 @@ Prefab:
       propertyPath: m_CastShadows
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 116894, guid: 3bc19b9f969a7e34c9dda11067afdc61, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3bc19b9f969a7e34c9dda11067afdc61, type: 2}
   m_IsPrefabParent: 0
@@ -4275,7 +4279,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 487232, guid: a08d8cde8a61a9c498442a4aed61bf0f, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -1.28
+      value: 0.41
       objectReference: {fileID: 0}
     - target: {fileID: 487232, guid: a08d8cde8a61a9c498442a4aed61bf0f, type: 2}
       propertyPath: m_LocalPosition.y
@@ -4283,7 +4287,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 487232, guid: a08d8cde8a61a9c498442a4aed61bf0f, type: 2}
       propertyPath: m_LocalPosition.z
-      value: -80.36
+      value: -55.52
       objectReference: {fileID: 0}
     - target: {fileID: 487232, guid: a08d8cde8a61a9c498442a4aed61bf0f, type: 2}
       propertyPath: m_LocalRotation.x
@@ -6928,6 +6932,10 @@ Prefab:
       propertyPath: m_LocalScale.y
       value: -1
       objectReference: {fileID: 0}
+    - target: {fileID: 112928, guid: 5fc1188f0016fae438142d3a181b6a97, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 5fc1188f0016fae438142d3a181b6a97, type: 2}
   m_IsPrefabParent: 0
@@ -7318,6 +7326,10 @@ Prefab:
       propertyPath: m_Name
       value: AI_Env_Sewer_Pipeline_Straight 5
       objectReference: {fileID: 0}
+    - target: {fileID: 143944, guid: 5fc43cb0af400f941a39c6822ea6415b, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 5fc43cb0af400f941a39c6822ea6415b, type: 2}
   m_IsPrefabParent: 0
@@ -7509,6 +7521,10 @@ Prefab:
     - target: {fileID: 496368, guid: f8b9f0f77cc696c43a2a685361f6adfd, type: 2}
       propertyPath: m_RootOrder
       value: 512
+      objectReference: {fileID: 0}
+    - target: {fileID: 184900, guid: f8b9f0f77cc696c43a2a685361f6adfd, type: 2}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f8b9f0f77cc696c43a2a685361f6adfd, type: 2}
@@ -13048,6 +13064,10 @@ Prefab:
       propertyPath: m_Name
       value: AI_Prop_Plank 10
       objectReference: {fileID: 0}
+    - target: {fileID: 159118, guid: 25def24f0b735f0468657801ece2963a, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 25def24f0b735f0468657801ece2963a, type: 2}
   m_IsPrefabParent: 0
@@ -15485,6 +15505,10 @@ Prefab:
     - target: {fileID: 159118, guid: 25def24f0b735f0468657801ece2963a, type: 2}
       propertyPath: m_Name
       value: AI_Prop_Plank 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 159118, guid: 25def24f0b735f0468657801ece2963a, type: 2}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 25def24f0b735f0468657801ece2963a, type: 2}
@@ -20736,6 +20760,10 @@ Prefab:
       propertyPath: m_RootOrder
       value: 574
       objectReference: {fileID: 0}
+    - target: {fileID: 168332, guid: 448b80c2e85a1c941a1fedc37d917a6f, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 448b80c2e85a1c941a1fedc37d917a6f, type: 2}
   m_IsPrefabParent: 0
@@ -22369,7 +22397,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 156236, guid: 08d6628be66ad20448ad2026e3f235bf, type: 2}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 08d6628be66ad20448ad2026e3f235bf, type: 2}
@@ -26079,7 +26107,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 143944, guid: 5fc43cb0af400f941a39c6822ea6415b, type: 2}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 5fc43cb0af400f941a39c6822ea6415b, type: 2}
@@ -31465,7 +31493,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 153104, guid: 1f0d6dd4d6ad78b439bb2dad26c4dc58, type: 2}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 1f0d6dd4d6ad78b439bb2dad26c4dc58, type: 2}
@@ -35909,6 +35937,10 @@ Prefab:
     - target: {fileID: 177650, guid: 25af7a0dc94b49040af8e2c9b579187c, type: 2}
       propertyPath: m_Name
       value: AI_Env_Sewer_Valve 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 177650, guid: 25af7a0dc94b49040af8e2c9b579187c, type: 2}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 25af7a0dc94b49040af8e2c9b579187c, type: 2}
@@ -40642,6 +40674,10 @@ Prefab:
       propertyPath: m_Name
       value: AI_Env_Sewer_Pipeline_End 5
       objectReference: {fileID: 0}
+    - target: {fileID: 192630, guid: e1df2d8008c71154986f4f21d0f2cd9d, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e1df2d8008c71154986f4f21d0f2cd9d, type: 2}
   m_IsPrefabParent: 0
@@ -41691,6 +41727,10 @@ Prefab:
     - target: {fileID: 140988, guid: 9bcb734bc36869645a2d1825e69b4327, type: 2}
       propertyPath: m_Name
       value: AI_Env_Sewer_Grate 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 140988, guid: 9bcb734bc36869645a2d1825e69b4327, type: 2}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9bcb734bc36869645a2d1825e69b4327, type: 2}

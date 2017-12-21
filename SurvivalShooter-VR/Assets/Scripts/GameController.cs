@@ -63,6 +63,7 @@ public class GameController : MonoBehaviour {
     [SerializeField]
     private int m_scoreToWin;
     private State m_currentState;
+    private bool m_isShow;
 
     enum State
     {
@@ -73,6 +74,7 @@ public class GameController : MonoBehaviour {
 
     void Start ()
     {
+        m_isShow = false;
         m_currentState = State.running;
         m_SoundManager = gameObject.GetComponent<AudioSource>();
         m_Animatormanager = m_Wood.GetComponent<Animator>();
@@ -188,13 +190,19 @@ public class GameController : MonoBehaviour {
         if(PlayerHealth.instance.isDead)
         {
             m_currentState = State.over;
-            ShowCanvas(timeFade, State.over);
+            ShowCanvas(timeFade, m_currentState);
         }
        
         if(score == m_scoreToWin)
         {
             m_currentState = State.win;
-            ShowCanvas(timeFade, State.win);
+            ShowCanvas(timeFade, m_currentState);
+        }
+
+        if(m_currentState == State.win && !m_isShow)
+        {
+            SoundController.Sound.Win();
+            m_isShow = true;
         }
     }
 	
@@ -266,11 +274,11 @@ public class GameController : MonoBehaviour {
 
             m_player.transform.position = startPositionPlayer;
             m_FadeforDie.GetComponent<CanvasGroup>().alpha -= Time.deltaTime / (_timer * 1.2f);
-           
+          
         }
         if (m_FadeforDie.GetComponent<CanvasGroup>().alpha == 0)
         {
-            PlayerHealth.instance.isDead = false;          
+            PlayerHealth.instance.isDead = false;
         }
     }
 
