@@ -28,7 +28,7 @@ public class EnemyAttack : MonoBehaviour
         {
             playerInRange = true;         
         }
-        else if(other.gameObject.tag == "Wood")
+        else if(other.gameObject.tag == "Wood" && WoodManager.instance._isCollider)
         {
             woodHit = true;
             enemyHealth.TakeDamage(20, this.gameObject.transform.position);
