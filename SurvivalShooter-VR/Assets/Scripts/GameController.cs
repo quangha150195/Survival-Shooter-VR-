@@ -129,61 +129,64 @@ public class GameController : MonoBehaviour {
             }
         }
 
-        Physics.Raycast(recticle.transform.position, recticle.transform.forward, out hit);
-        if(hit.collider!=null)
+        if (m_isAttack || m_currentState == State.over || m_currentState == State.win)
         {
-            if (hit.collider.tag == "Gun" && (GvrViewer.Instance.Triggered || Input.GetButton("PickButton")))
+            Physics.Raycast(recticle.transform.position, recticle.transform.forward, out hit);
+            if (hit.collider != null)
             {
-                GameObject gun = hit.collider.gameObject;
-                float distance = Vector3.Distance(gun.transform.position, m_player.transform.position);
-                if (distance < 3.0f)
+                if (hit.collider.tag == "Gun" && (GvrViewer.Instance.Triggered || Input.GetButton("PickButton")))
                 {
-                    gun.SetActive(false);
-                    m_gun.SetActive(true);
-                    m_Wood.SetActive(false);
-                    m_isGun = true;
+                    GameObject gun = hit.collider.gameObject;
+                    float distance = Vector3.Distance(gun.transform.position, m_player.transform.position);
+                    if (distance < 3.0f)
+                    {
+                        gun.SetActive(false);
+                        m_gun.SetActive(true);
+                        m_Wood.SetActive(false);
+                        m_isGun = true;
+                    }
                 }
-            }
 
-            if (hit.collider.tag == "Wood" && (GvrViewer.Instance.Triggered || Input.GetButton("PickButton")))
-            {
-                GameObject wood = hit.collider.gameObject;
-                float distance = Vector3.Distance(wood.transform.position, m_player.transform.position);
-                if (distance < 3.0f)
+                if (hit.collider.tag == "Wood" && (GvrViewer.Instance.Triggered || Input.GetButton("PickButton")))
                 {
-                    wood.SetActive(false);
-                    m_gun.SetActive(false);
-                    m_Wood.SetActive(true);
-                    m_isGun = false;
+                    GameObject wood = hit.collider.gameObject;
+                    float distance = Vector3.Distance(wood.transform.position, m_player.transform.position);
+                    if (distance < 3.0f)
+                    {
+                        wood.SetActive(false);
+                        m_gun.SetActive(false);
+                        m_Wood.SetActive(true);
+                        m_isGun = false;
+                    }
                 }
-            }
 
-            if (m_isAttack && hit.collider.tag == "Enemy")
-            {
-                enemy = hit.collider.gameObject;
-            }
+                if (m_isAttack && hit.collider.tag == "Enemy")
+                {
+                    enemy = hit.collider.gameObject;
+                }
 
-            if (hit.collider.tag == "VRMenu")
-            {
-                if (_checkOneShot)
+                if (hit.collider.tag == "VRMenu")
                 {
-                    m_SoundManager.PlayOneShot(m_SoundRaycast);
-                    _checkOneShot = false;
+                    if (_checkOneShot)
+                    {
+                        m_SoundManager.PlayOneShot(m_SoundRaycast);
+                        _checkOneShot = false;
+                    }
+                    GameObject _thisButton = hit.collider.gameObject;
+                    iTween.ScaleTo(_thisButton, iTween.Hash("x", 1.5f, "y", 1.5f, "time", 0.3f));
+                    if (GvrViewer.Instance.Triggered || Input.GetButton("ShootButton"))
+                    {
+                        m_SoundManager.PlayOneShot(m_SoundClick);
+                        hit.collider.gameObject.transform.localScale = new Vector3(1, 1, 1);
+                        m_player.GetComponent<PlayerController>().m_speed = 0;
+                        _thisButton.GetComponent<Button>().onClick.Invoke();
+                    }
                 }
-                GameObject _thisButton = hit.collider.gameObject;
-                iTween.ScaleTo(_thisButton, iTween.Hash("x", 1.5f, "y", 1.5f, "time", 0.3f));
-                if (GvrViewer.Instance.Triggered || Input.GetButton("ShootButton"))
+                else if (hit.collider.tag != "VRMenu")
                 {
-                    m_SoundManager.PlayOneShot(m_SoundClick);
-                    hit.collider.gameObject.transform.localScale = new Vector3(1, 1, 1);
-                    m_player.GetComponent<PlayerController>().m_speed = 0;
-                    _thisButton.GetComponent<Button>().onClick.Invoke();
+                    _checkOneShot = true;
+                    Scale_ButtonMenu();
                 }
-            }
-            else if(hit.collider.tag != "VRMenu")
-            {
-                _checkOneShot = true;
-                Scale_ButtonMenu();
             }
         }
 

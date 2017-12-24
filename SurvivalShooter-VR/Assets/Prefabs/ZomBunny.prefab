@@ -346,6 +346,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timeBetweenAttacks: 1
   attackDamage: 5
+  playerInRange: 0
 --- !u!135 &13500000
 SphereCollider:
   m_ObjectHideFlags: 1
@@ -787,7 +788,7 @@ ParticleSystem:
       minMaxState: 0
     randomizeRotationDirection: 0
     gravityModifier: 0
-    maxNumParticles: 20
+    maxNumParticles: 3
     rotation3D: 0
   ShapeModule:
     serializedVersion: 2
@@ -2276,7 +2277,7 @@ ParticleSystem:
       minMaxState: 0
     randomizeRotationDirection: 0
     gravityModifier: 3
-    maxNumParticles: 20
+    maxNumParticles: 3
     rotation3D: 0
   ShapeModule:
     serializedVersion: 2
