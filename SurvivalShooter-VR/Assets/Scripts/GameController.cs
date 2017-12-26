@@ -120,20 +120,17 @@ public class GameController : MonoBehaviour {
             m_Animatormanager.SetBool("Fight", false);
         }
 
-        if (m_isAttack)
-        {
-            //Attack
-            if (m_isGun)
-            {
-                Shoot();
-            }
-        }
-
         if (m_isAttack || m_currentState == State.over || m_currentState == State.win)
         {
             Physics.Raycast(recticle.transform.position, recticle.transform.forward, out hit);
             if (hit.collider != null)
             {
+                //Attack
+                if (m_isGun && m_isAttack)
+                {
+                    Shoot();
+                }
+
                 if (hit.collider.tag == "Gun" && (GvrViewer.Instance.Triggered || Input.GetButton("PickButton")))
                 {
                     GameObject gun = hit.collider.gameObject;

@@ -468,6 +468,7 @@ GameObject:
   - 23: {fileID: 2334334}
   - 65: {fileID: 6538216}
   - 95: {fileID: 9551454}
+  - 114: {fileID: 11486176}
   m_Layer: 0
   m_Name: wood
   m_TagString: Wood
@@ -1549,9 +1550,9 @@ BoxCollider:
   m_GameObject: {fileID: 154592}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.5, y: 0.5, z: 0.5}
+  m_Size: {x: 2, y: 0.5, z: 0.5}
   m_Center: {x: 0.8, y: 0.05736679, z: -0.0000038232442}
 --- !u!65 &6550768
 BoxCollider:
@@ -1897,8 +1898,8 @@ Light:
   m_Type: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Intensity: 2
-  m_Range: 40
-  m_SpotAngle: 45
+  m_Range: 30
+  m_SpotAngle: 179
   m_CookieSize: 10
   m_Shadows:
     m_Type: 0
@@ -2766,7 +2767,6 @@ MonoBehaviour:
   startingHealth: 100
   currentHealth: 0
   healthSlider: {fileID: 11434140}
-  deathClip: {fileID: 8300000, guid: d36a393bca4582043982db9089e1694f, type: 3}
   blood: {fileID: 9523998}
   isDead: 0
 --- !u!114 &11456034
@@ -3201,6 +3201,18 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: 9
+--- !u!114 &11486176
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 154592}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a2aaeb1a7d37144c880799423bb8f792, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _isCollider: 0
 --- !u!114 &11487760
 MonoBehaviour:
   m_ObjectHideFlags: 1
