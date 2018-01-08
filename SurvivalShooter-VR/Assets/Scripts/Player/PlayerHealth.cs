@@ -4,12 +4,11 @@ using System.Collections;
 
 public class PlayerHealth : MonoBehaviour
 {
-    public int startingHealth = 100;
+    public int startingHealth ;
     public int currentHealth;
     public Slider healthSlider;
     public Animator blood;
     public bool isDead;
-    bool damaged;
 
     public static PlayerHealth instance;
 
@@ -17,19 +16,12 @@ public class PlayerHealth : MonoBehaviour
     {
         currentHealth = startingHealth;
         instance = this;
+        healthSlider.value = currentHealth;
     }
-
-
-    void Update ()
-    {
-        
-    }
-
 
     public void TakeDamage (int amount)
     {
         blood.Play("Blood", -1, 0);
-        damaged = true;
 
         currentHealth -= amount;
 
@@ -50,5 +42,15 @@ public class PlayerHealth : MonoBehaviour
         PlayerController.instance.m_move = false;
 
         SoundController.Sound.PlayerDeath();
+    }
+
+    void OnCollisionEnter (Collision other)
+    {
+        if(other.gameObject.tag == "ItemHealth")
+        {
+          currentHealth += 15;
+          healthSlider.value = currentHealth;
+          Destroy(other.gameObject);
+        }
     }
 }

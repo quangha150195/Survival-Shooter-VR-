@@ -6,6 +6,9 @@ TagManager:
   tags:
   - Gun
   - Enemy
+  - Wood
+  - VRMenu
+  - ItemHealth
   layers:
   - Default
   - TransparentFX

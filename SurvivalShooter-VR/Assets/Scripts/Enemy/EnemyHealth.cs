@@ -8,7 +8,6 @@ public class EnemyHealth : MonoBehaviour
     public int scoreValue = 10;
     public AudioClip deathClip;
 
-
     Animator anim;
     AudioSource enemyAudio;
     ParticleSystem hitParticles;
@@ -16,7 +15,10 @@ public class EnemyHealth : MonoBehaviour
     bool isDead;
     bool isSinking;
 
-
+    public void OnValidate()
+    {
+      int a = 1;
+    }
     void Awake ()
     {
         anim = GetComponent <Animator> ();
@@ -66,6 +68,11 @@ public class EnemyHealth : MonoBehaviour
 
         enemyAudio.clip = deathClip;
         enemyAudio.Play ();
+        int i = Random.Range(0,3);
+        if(i==1)
+        {
+          GameObject item = Instantiate(Resources.Load("ItemHealth"), this.gameObject.transform.position, Quaternion.identity) as GameObject;
+        }
     }
 
 
