@@ -69,4 +69,9 @@ public class SoundController : MonoBehaviour
     {
         audiosource.PlayOneShot(SoundClips[5]);
     }
+
+    public void ItemHealth()
+    {
+        audiosource.PlayOneShot(SoundClips[6]);
+    }
 }

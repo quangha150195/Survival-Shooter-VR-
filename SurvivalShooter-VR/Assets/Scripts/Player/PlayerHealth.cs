@@ -47,10 +47,15 @@ public class PlayerHealth : MonoBehaviour
     void OnCollisionEnter (Collision other)
     {
         if(other.gameObject.tag == "ItemHealth")
-        {
+        {         
           currentHealth += 15;
+          if(currentHealth >= startingHealth)
+          {
+            currentHealth = startingHealth;
+          }
           healthSlider.value = currentHealth;
           Destroy(other.gameObject);
+          SoundController.Sound.ItemHealth();
         }
     }
 }
