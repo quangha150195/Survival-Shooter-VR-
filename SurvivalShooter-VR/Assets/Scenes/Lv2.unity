@@ -4370,6 +4370,10 @@ MonoBehaviour:
     type: 2}
   m_PrefabInternal: {fileID: 159172733}
   m_Script: {fileID: 708705254, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+--- !u!1 &159172736 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 193390, guid: a08d8cde8a61a9c498442a4aed61bf0f, type: 2}
+  m_PrefabInternal: {fileID: 159172733}
 --- !u!1001 &162161955
 Prefab:
   m_ObjectHideFlags: 0
@@ -13321,7 +13325,6 @@ GameObject:
   m_Component:
   - 4: {fileID: 651948647}
   - 114: {fileID: 651948648}
-  - 82: {fileID: 651948649}
   m_Layer: 0
   m_Name: GameController
   m_TagString: Untagged
@@ -13352,98 +13355,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 24d48c8ac551244ba82fe32f2532c5f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_scoreToWin: 10
   m_player: {fileID: 104593315}
   m_gun: {fileID: 1549343444}
+  recticle: {fileID: 1382334644}
+  objLight: {fileID: 147194827}
+  m_fps: {fileID: 159172736}
   m_icon: {fileID: 1610678149}
   m_iconHealth: {fileID: 586349506}
   m_slider: {fileID: 215927626}
-  recticle: {fileID: 1382334644}
-  objLight: {fileID: 147194827}
   txtScore: {fileID: 740596314}
   txtScoreOver: {fileID: 869745697}
   txtScoreWin: {fileID: 159172735}
-  m_FadeforDie: {fileID: 1135725842}
-  timeFade: 2
   m_GameOver: {fileID: 2118578687}
   m_GameWin: {fileID: 159172734}
   m_SoundClick: {fileID: 8300000, guid: 4add4594a59e138499354f2443591f0d, type: 3}
   m_SoundRaycast: {fileID: 8300000, guid: 2c1a04221d1144b4ab77ddcf65a15ce9, type: 3}
   m_Wood: {fileID: 1672745660}
-  m_scoreToWin: 6
---- !u!82 &651948649
-AudioSource:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 651948646}
-  m_Enabled: 1
-  serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 1
-  m_Volume: 1
-  m_Pitch: 1
-  Loop: 0
-  Mute: 0
-  Spatialize: 0
-  Priority: 128
-  DopplerLevel: 1
-  MinDistance: 1
-  MaxDistance: 500
-  Pan2D: 0
-  rolloffMode: 0
-  BypassEffects: 0
-  BypassListenerEffects: 0
-  BypassReverbZones: 0
-  rolloffCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    - time: 1
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  panLevelCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 0
-  spreadCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  reverbZoneMixCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 0
+  m_FadeforDie: {fileID: 1135725842}
+  timeFade: 2
 --- !u!1001 &654454050
 Prefab:
   m_ObjectHideFlags: 0

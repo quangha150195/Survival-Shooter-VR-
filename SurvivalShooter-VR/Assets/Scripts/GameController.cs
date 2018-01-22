@@ -3,67 +3,69 @@ using System.Collections;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
-[RequireComponent(typeof(AudioSource))]
+//[RequireComponent(typeof(AudioSource))]
 public class GameController : MonoBehaviour {
 
-    public GameObject m_player;
-    public GameObject m_gun;
-    public GameObject m_icon;
-    public GameObject m_iconHealth;
-    public GameObject m_slider;
-
+    //Private variable
     private float m_speedShoot;
-    public GameObject recticle;
-
-    public GameObject objLight;
-    Light gunLight;
-    Light faceLight;
-    LineRenderer gunLine;
-
-    RaycastHit hit;
-    Vector3 hitPoint;
-    Vector3 startPositionPlayer;
-
+    private Light gunLight;
+    private Light faceLight;
+    private LineRenderer gunLine;
+    private RaycastHit hit;
+    private Vector3 hitPoint;
+    private Vector3 startPositionPlayer;
     private bool m_isGun;
     private bool m_isEffect;
     private bool m_isShoot;
     private float m_timer;
     private GameObject enemy;
+    private Animator m_Animatormanager;
+    private AudioSource m_SoundManager;
+    private float timeFadeOver = 0;
+    private bool _checkOneShot = true;
+    private bool m_isAttack = false;
+
+    [Header("Fps")]
+    public bool m_showFps;
+
+    [Header("Win Condition")]
+    [SerializeField]
+    private int m_scoreToWin;
+    private State m_currentState;
+    private bool m_isShow;
+
+    [Header("Another Object")]
+    public GameObject m_player;
+    public GameObject m_gun;
+    public GameObject recticle;
+    public GameObject objLight;
+    public GameObject m_fps;
+
+    [Header("Health Bar")]
+    public GameObject m_icon;
+    public GameObject m_iconHealth;
+    public GameObject m_slider;
 
     public static int score;
+
+    [Header("Text")]
     public Text txtScore;
     public Text txtScoreOver;
     public Text txtScoreWin;
 
-    [SerializeField]
-    private GameObject m_FadeforDie;
-    [SerializeField]
-    private float timeFade = 2;
+    [Header("Canvas")]
     [SerializeField]
     private GameObject m_GameOver;
     [SerializeField]
     private GameObject m_GameWin;
 
-    [Header("Audio")]
-    [SerializeField]
-    private AudioClip m_SoundClick;
-    [SerializeField]
-    private AudioClip m_SoundRaycast;
-
     [Header("Animation")]
     [SerializeField]
     private GameObject m_Wood;
-
-    Animator m_Animatormanager;
-    AudioSource m_SoundManager;
-    private float timeFadeOver = 0;
-    private bool _checkOneShot = true;
-    private bool m_isAttack = false;
-
     [SerializeField]
-    private int m_scoreToWin;
-    private State m_currentState;
-    private bool m_isShow;
+    private GameObject m_FadeforDie;
+    [SerializeField]
+    private float timeFade = 2;
 
     enum State
     {
@@ -74,6 +76,7 @@ public class GameController : MonoBehaviour {
 
     void Start ()
     {
+        m_fps.SetActive(m_showFps);
         m_isShow = false;
         m_currentState = State.running;
         m_SoundManager = gameObject.GetComponent<AudioSource>();
@@ -166,14 +169,14 @@ public class GameController : MonoBehaviour {
                 {
                     if (_checkOneShot)
                     {
-                        m_SoundManager.PlayOneShot(m_SoundRaycast);
+                        SoundController.Sound.Raycast();
                         _checkOneShot = false;
                     }
                     GameObject _thisButton = hit.collider.gameObject;
                     iTween.ScaleTo(_thisButton, iTween.Hash("x", 1.5f, "y", 1.5f, "time", 0.3f));
                     if (GvrViewer.Instance.Triggered || Input.GetButton("ShootButton"))
                     {
-                        m_SoundManager.PlayOneShot(m_SoundClick);
+                        SoundController.Sound.Click();
                         hit.collider.gameObject.transform.localScale = new Vector3(1, 1, 1);
                         m_player.GetComponent<PlayerController>().m_speed = 0;
                         _thisButton.GetComponent<Button>().onClick.Invoke();
