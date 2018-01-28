@@ -64,7 +64,7 @@ public class EnemyHealth : MonoBehaviour
 
         enemyAudio.clip = deathClip;
         enemyAudio.Play ();
-        int i = Random.Range(0,3);
+        int i = Random.Range(0, 5);
         if (i == 1)
         {
             GameObject item = Instantiate(Resources.Load("ItemHealth"), this.gameObject.transform.position, Quaternion.identity) as GameObject;
