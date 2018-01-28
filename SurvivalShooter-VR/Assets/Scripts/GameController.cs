@@ -24,6 +24,7 @@ public class GameController : MonoBehaviour {
     private float timeFadeOver = 0;
     private bool _checkOneShot = true;
     private bool m_isAttack = false;
+    private bool m_isPick = false;
 
     [Header("Fps")]
     public bool m_showFps;
@@ -109,6 +110,15 @@ public class GameController : MonoBehaviour {
 
         ///////////////////////////////////
 
+        if (Input.GetButton("PickButton") && (m_currentState == State.running))
+        {
+            m_isPick = true;
+        }
+        else
+        {
+            m_isPick = false;
+        }
+
         if ((Input.GetButton("ShootButton") || GvrViewer.Instance.Triggered) && (m_currentState == State.running))
         {
             m_isAttack = true;
@@ -123,7 +133,7 @@ public class GameController : MonoBehaviour {
             m_Animatormanager.SetBool("Fight", false);
         }
 
-        if (m_isAttack || m_currentState == State.over || m_currentState == State.win)
+        if (m_isPick || m_isAttack || m_currentState == State.over || m_currentState == State.win)
         {
             Physics.Raycast(recticle.transform.position, recticle.transform.forward, out hit);
             if (hit.collider != null)
@@ -134,7 +144,7 @@ public class GameController : MonoBehaviour {
                     Shoot();
                 }
 
-                if (hit.collider.tag == "Gun" && (GvrViewer.Instance.Triggered || Input.GetButton("PickButton")))
+                if ((hit.collider.tag == "Gun") && (GvrViewer.Instance.Triggered || Input.GetButton("PickButton")))
                 {
                     GameObject gun = hit.collider.gameObject;
                     float distance = Vector3.Distance(gun.transform.position, m_player.transform.position);
@@ -147,7 +157,7 @@ public class GameController : MonoBehaviour {
                     }
                 }
 
-                if (hit.collider.tag == "Wood" && (GvrViewer.Instance.Triggered || Input.GetButton("PickButton")))
+                if ((hit.collider.tag == "Wood") && (GvrViewer.Instance.Triggered || Input.GetButton("PickButton")))
                 {
                     GameObject wood = hit.collider.gameObject;
                     float distance = Vector3.Distance(wood.transform.position, m_player.transform.position);
